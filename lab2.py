@@ -14,6 +14,7 @@ class ColorModel(Enum):
     hsi = 2
     hsl = 3
     gray = 4  # picture 2d
+    sepia = 5
 
 
 class BaseImage:
@@ -195,11 +196,11 @@ class BaseImage:
                 return self
 
 
-image_test = BaseImage('data/lena.jpg', ColorModel.rgb)
-image_test.show_img()
-x = image_test.to_hsl()
-x.show_img()
-y = x.to_rgb()
-y.show_img()
+# image_test = BaseImage('data/lena.jpg', ColorModel.rgb)
+# image_test.show_img()
+# x = image_test.to_hsi()
+# x.show_img()
+# y = x.to_rgb()
+# y.show_img()
 
 

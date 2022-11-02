@@ -1,5 +1,6 @@
 import matplotlib
 import numpy as np
+from matplotlib import pyplot as plt
 
 from matplotlib.image import imread
 from matplotlib.pyplot import imshow
@@ -41,6 +42,10 @@ class BaseImage:
         """
         method that shows image stored in attribute date
         """
+        if self.color_model == ColorModel.gray:
+            plt.imshow(self.data, cmap='gray', vmin=0, vmax=255)
+            matplotlib.pyplot.show()
+            return
         imshow(self.data)
         matplotlib.pyplot.show()
 

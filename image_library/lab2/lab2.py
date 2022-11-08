@@ -60,6 +60,7 @@ class BaseImage:
         method that converts image in attribute date to hsv
         method returns new object of class BaseImage that stores image in hsv color model
         """
+        # TODO: Poprawić algorytm hsv
         if self.color_model != ColorModel.rgb:
             raise Exception("Color model must be RGB")
         red_layer = self.get_layer(0) / 255.0
@@ -84,6 +85,7 @@ class BaseImage:
         method that converts image in attribute date to hsi
         method returns new object of class BaseImage that stores image in hsi color model
         """
+        # TODO: Poprawić algorytm hsi (Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers).)
         if self.color_model != ColorModel.rgb:
             raise Exception("Color model must be RGB")
         red_layer = self.get_layer(0) / 255.0
@@ -108,6 +110,7 @@ class BaseImage:
         method that converts image in attribute date to hsl
         method returns new object of class BaseImage that stores image in hsl color model
         """
+        # TODO: Poprawić algorytm hsl (Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers).)
         if self.color_model != ColorModel.rgb:
             raise Exception("Color model must be RGB")
         red_layer = self.get_layer(0) / 255.0
@@ -199,13 +202,3 @@ class BaseImage:
                 return self.hsl_to_rgb()
             case _:
                 return self
-
-
-# image_test = BaseImage('data/lena.jpg', ColorModel.rgb)
-# image_test.show_img()
-# x = image_test.to_hsi()
-# x.show_img()
-# y = x.to_rgb()
-# y.show_img()
-
-

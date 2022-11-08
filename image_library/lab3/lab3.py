@@ -1,10 +1,8 @@
 from typing import Any
 
-import matplotlib
-import matplotlib.pyplot as plt
 import numpy as np
 
-from lab2 import BaseImage, ColorModel
+from image_library.lab2.lab2 import BaseImage, ColorModel
 
 
 class GrayScaleTransform(BaseImage):
@@ -52,21 +50,3 @@ class GrayScaleTransform(BaseImage):
             raise Exception("Pass only 1 argument")
         return BaseImage(np.dstack((L0, L1, L2)), ColorModel.sepia)
 
-
-image_test1 = GrayScaleTransform('data/lena.jpg', ColorModel.rgb)
-image_test1.show_img()
-gray = image_test1.to_gray()
-gray.show_img()
-
-sepia1 = image_test1.to_sepia((1.1, 0.9))
-sepia2 = image_test1.to_sepia((1.5, 0.5))
-sepia3 = image_test1.to_sepia((1.9, 0.1))
-sepia4 = image_test1.to_sepia((), 20)
-sepia5 = image_test1.to_sepia((), 30)
-sepia6 = image_test1.to_sepia((), 40)
-sepia1.show_img()
-sepia2.show_img()
-sepia3.show_img()
-sepia4.show_img()
-sepia5.show_img()
-sepia6.show_img()

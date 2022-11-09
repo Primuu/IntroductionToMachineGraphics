@@ -2,6 +2,7 @@ from typing import Any
 
 from image_library.lab2.lab2 import ColorModel
 from image_library.lab3.lab3 import GrayScaleTransform
+from image_library.lab4.lab4_histogram import Histogram
 
 
 class Image(GrayScaleTransform):

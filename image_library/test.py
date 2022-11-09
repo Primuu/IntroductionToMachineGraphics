@@ -66,7 +66,6 @@ lena = BaseImage('../data/lena.jpg', ColorModel.rgb)
 # image_comparison_hist = image_comparison.histogram()
 # image_comparison_hist.plot()
 
-
 lena1 = ImageComparison('../data/lena.jpg', ColorModel.rgb)
 lena1.show_img()
 korwin_lena = Image('../data/lena_korwin.jpg', ColorModel.rgb)

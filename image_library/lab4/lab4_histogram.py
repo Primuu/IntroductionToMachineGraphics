@@ -1,4 +1,3 @@
-import matplotlib
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -35,7 +34,7 @@ class Histogram:
             plt.plot(bin_edges, self.values, color="black")
             plt.show()
         else:
-            plt.figure(figsize=(12, 9))
+            plt.figure(figsize=(12, 6))
             bin_edges = np.linspace(0, 254.9, 256)
             plt.subplot(131)
 

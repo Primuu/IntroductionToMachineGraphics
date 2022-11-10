@@ -9,7 +9,7 @@ from image_library.lab4.lab4_comparison import ImageComparison, ImageDiffMethod
 from image_library.lab4.lab4_histogram import Histogram
 
 lena = BaseImage('../data/lena.jpg', ColorModel.rgb)
-# lena.show_img()
+lena.show_img()
 
 # Lab 2
 
@@ -54,23 +54,15 @@ lena = BaseImage('../data/lena.jpg', ColorModel.rgb)
 
 # Lab 4
 
-# histogram = Histogram(lena.data)
-# histogram.plot()
-#
-# image_gray = GrayScaleTransform("../data/lena.jpg", ColorModel.rgb)
-# image_gray = image_gray.to_gray()
-# histogram_gray = Histogram(image_gray.data)
-# histogram_gray.plot()
-#
-# image_comparison = ImageComparison("../data/lena.jpg", ColorModel.rgb)
-# image_comparison_hist = image_comparison.histogram()
-# image_comparison_hist.plot()
+image_comparison = ImageComparison("../data/lena.jpg", ColorModel.rgb)
+image_comparison.histogram().plot()
 
-lena1 = ImageComparison('../data/lena.jpg', ColorModel.rgb)
-lena1.show_img()
+image_gray = GrayScaleTransform("../data/lena.jpg", ColorModel.rgb)
+Histogram(image_gray.to_gray().data).plot()
+
 korwin_lena = Image('../data/lena_korwin.jpg', ColorModel.rgb)
 korwin_lena.show_img()
-mse = lena1.compare_to(korwin_lena, ImageDiffMethod.mse)
-rmse = lena1.compare_to(korwin_lena, ImageDiffMethod.rmse)
-print(mse)
-print(rmse)
+mse = image_comparison.compare_to(korwin_lena, ImageDiffMethod.mse)
+rmse = image_comparison.compare_to(korwin_lena, ImageDiffMethod.rmse)
+print("MSE: " + str(mse))
+print("RMSE: " + str(rmse))

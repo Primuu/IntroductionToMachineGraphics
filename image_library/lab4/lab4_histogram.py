@@ -1,4 +1,3 @@
-import matplotlib
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -58,3 +57,9 @@ class Histogram:
             plt.plot(bin_edges, self.values[:, :, 2].flatten(), color="blue")
 
             plt.show()
+
+    def to_cumulated(self) -> 'Histogram':
+        """
+        method that returns cumulative histogram based on the internal state of the object
+        """
+        pass

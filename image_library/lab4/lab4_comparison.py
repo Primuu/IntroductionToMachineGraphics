@@ -34,8 +34,8 @@ class ImageComparison(BaseImage):
         """
         if self.color_model != ColorModel.rgb or other.color_model != ColorModel.rgb:
             raise Exception("Both images must be rgb color model!")
-        gray_self = GrayScaleTransform(self.data, ColorModel.rgb)
-        gray_other = GrayScaleTransform(other.data, ColorModel.rgb)
+        gray_self = GrayScaleTransform(self.data, ColorModel.rgb).to_gray()
+        gray_other = GrayScaleTransform(other.data, ColorModel.rgb).to_gray()
         x_hist = Histogram(gray_self.data).values
         y_hist = Histogram(gray_other.data).values
         n = len(x_hist)
@@ -43,6 +43,7 @@ class ImageComparison(BaseImage):
         for i in range(n):
             sum_ += (x_hist[i] - y_hist[i]) ** 2
         sum_ = np.sum(sum_)
+        sum_ = sum_ / n
         if method == ImageDiffMethod.rmse:
             sum_ = math.sqrt(sum_)
         return sum_

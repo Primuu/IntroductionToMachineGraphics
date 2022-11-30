@@ -7,8 +7,9 @@ from image_library.lab2.lab2 import BaseImage, ColorModel
 from image_library.lab3.lab3 import GrayScaleTransform
 from image_library.lab4.lab4_comparison import ImageComparison, ImageDiffMethod
 from image_library.lab4.lab4_histogram import Histogram
+from image_library.lab5.lab5_image_aligning import ImageAligning
 
-lena = BaseImage('../data/lena.jpg', ColorModel.rgb)
+# lena = BaseImage('../data/lena.jpg', ColorModel.rgb)
 # lena.show_img()
 
 # Lab 2
@@ -45,32 +46,38 @@ lena = BaseImage('../data/lena.jpg', ColorModel.rgb)
 # sepia5.show_img()
 # sepia6.show_img()
 
-# After adding main interface:
-# image = Image('../data/lena.jpg', ColorModel.rgb)
-# image.show_img()
-# image.to_hsi().show_img()
-# image.to_hsi().hsi_to_rgb().show_img()
-# image.show_img()
-
 # Lab 4
 
-# histogram = Histogram(lena.data)
-# histogram.plot()
-#
-# image_gray = GrayScaleTransform("../data/lena.jpg", ColorModel.rgb)
-# image_gray = image_gray.to_gray()
-# histogram_gray = Histogram(image_gray.data)
-# histogram_gray.plot()
-#
-# image_comparison = ImageComparison("../data/lena.jpg", ColorModel.rgb)
-# image_comparison_hist = image_comparison.histogram()
-# image_comparison_hist.plot()
-
 lena1 = ImageComparison('../data/lena.jpg', ColorModel.rgb)
-lena1.show_img()
-korwin_lena = Image('../data/lena_korwin.jpg', ColorModel.rgb)
-korwin_lena.show_img()
-mse = lena1.compare_to(korwin_lena, ImageDiffMethod.mse)
-rmse = lena1.compare_to(korwin_lena, ImageDiffMethod.rmse)
-print(mse)
-print(rmse)
+# lena1.show_img()
+# lena1.histogram().plot()
+
+gray_lena = GrayScaleTransform(lena1.data, ColorModel.rgb).to_gray()
+gray_lena.show_img()
+Histogram(gray_lena.data).plot()
+#
+# lena_kropka = Image('../data/lena_kropka.jpg', ColorModel.rgb)
+# lena_kropka.show_img()
+#
+# lena_korwin = Image('../data/lena_korwin.jpg', ColorModel.rgb)
+# lena_korwin.show_img()
+#
+# mse = lena1.compare_to(lena_kropka, ImageDiffMethod.mse)
+# rmse = lena1.compare_to(lena_kropka, ImageDiffMethod.rmse)
+# print("Lena i lena_kropka: Mse - " + str(mse) + " ,Rmse - " + str(rmse))
+#
+# mse1 = lena1.compare_to(lena_korwin, ImageDiffMethod.mse)
+# rmse1 = lena1.compare_to(lena_korwin, ImageDiffMethod.rmse)
+# print("Lena i lena_korwin: Mse - " + str(mse1) + " ,Rmse - " + str(rmse1))
+
+
+# Lab 5
+
+print(gray_lena.data)
+
+image_aligning = ImageAligning(gray_lena.data, ColorModel.gray).align_image()
+print(image_aligning.data)
+
+grey_image_aligning = GrayScaleTransform(image_aligning.data, ColorModel.gray)
+grey_image_aligning.show_img()
+Histogram(grey_image_aligning.data).plot()

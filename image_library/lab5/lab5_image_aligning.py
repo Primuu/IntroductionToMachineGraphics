@@ -24,3 +24,4 @@ class ImageAligning(BaseImage):
             self.data = self.data.astype(int)
         return BaseImage(self.data, ColorModel.gray)
 
+

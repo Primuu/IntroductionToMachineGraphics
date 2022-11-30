@@ -32,6 +32,7 @@ class ImageComparison(BaseImage):
         """
         method that returns mse or rmse for two images
         """
+        # TODO: Image zamienić na BaseImage
         if self.color_model != ColorModel.rgb or other.color_model != ColorModel.rgb:
             raise Exception("Both images must be rgb color model!")
         gray_self = GrayScaleTransform(self.data, ColorModel.rgb).to_gray()

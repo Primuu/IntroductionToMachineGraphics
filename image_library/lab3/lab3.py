@@ -19,7 +19,7 @@ class GrayScaleTransform(BaseImage):
         green_layer = self.get_layer(1) * 0.587
         blue_layer = self.get_layer(2) * 0.114
         gray = np.round((red_layer + green_layer + blue_layer)).astype('i')
-        return BaseImage(gray, ColorModel.gray)
+        return self.__class__(gray, ColorModel.gray)
 
     def to_sepia(self, alpha_beta: tuple = (None, None), w: int = None) -> BaseImage:
         """
@@ -48,5 +48,4 @@ class GrayScaleTransform(BaseImage):
             L1 = np.round(L1).astype('i')
         else:
             raise Exception("Pass only 1 argument")
-        return BaseImage(np.dstack((L0, L1, L2)), ColorModel.sepia)
-
+        return self.__class__(np.dstack((L0, L1, L2)), ColorModel.sepia)

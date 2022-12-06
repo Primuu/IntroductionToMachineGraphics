@@ -4,7 +4,6 @@ from typing import Any
 
 import numpy as np
 
-from image_library.imageLib import Image
 from image_library.lab2.lab2 import BaseImage, ColorModel
 from image_library.lab3.lab3 import GrayScaleTransform
 from image_library.lab4.lab4_histogram import Histogram
@@ -28,11 +27,10 @@ class ImageComparison(BaseImage):
         """
         return Histogram(self.data)
 
-    def compare_to(self, other: Image, method: ImageDiffMethod) -> float:
+    def compare_to(self, other: BaseImage, method: ImageDiffMethod) -> float:
         """
         method that returns mse or rmse for two images
         """
-        # TODO: Image zamienić na BaseImage
         if self.color_model != ColorModel.rgb or other.color_model != ColorModel.rgb:
             raise Exception("Both images must be rgb color model!")
         gray_self = GrayScaleTransform(self.data, ColorModel.rgb).to_gray()

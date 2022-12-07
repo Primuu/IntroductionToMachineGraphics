@@ -1,11 +1,12 @@
 from image_library.imageLib import Image
 from image_library.lab2.lab2 import ColorModel
-from image_library.lab3.lab3 import GrayScaleTransform
-from image_library.lab4.lab4_comparison import ImageComparison, ImageDiffMethod
+from image_library.lab4.lab4_comparison import ImageDiffMethod
 from image_library.lab4.lab4_histogram import Histogram
-from image_library.lab5.lab5_image_aligning import ImageAligning
 
 lena = Image('../data/lena.jpg', ColorModel.rgb)
+lena_dot = Image('../data/lena_kropka.jpg', ColorModel.rgb)
+lena_confederation = Image('../data/lena_korwin.jpg', ColorModel.rgb)
+
 lena.show_img()
 
 # Lab 2
@@ -44,33 +45,31 @@ lena.show_img()
 
 # Lab 4
 
-lena.histogram().plot()
-
-lena.to_gray().show_img()
-Histogram(lena.to_gray().data).plot()
-
-lena_kropka = Image('../data/lena_kropka.jpg', ColorModel.rgb)
-lena_kropka.show_img()
-
-lena_korwin = Image('../data/lena_korwin.jpg', ColorModel.rgb)
-lena_korwin.show_img()
-
-mse = lena.compare_to(lena_kropka, ImageDiffMethod.mse)
-rmse = lena.compare_to(lena_kropka, ImageDiffMethod.rmse)
-print("Lena i lena_kropka: Mse - " + str(mse) + " ,Rmse - " + str(rmse))
-
-mse1 = lena.compare_to(lena_korwin, ImageDiffMethod.mse)
-rmse1 = lena.compare_to(lena_korwin, ImageDiffMethod.rmse)
-print("Lena i lena_korwin: Mse - " + str(mse1) + " ,Rmse - " + str(rmse1))
+# lena.histogram().plot()
+#
+# lena.to_gray().show_img()
+# Histogram(lena.to_gray().data).plot()
+#
+# lena_dot.show_img()
+#
+# lena_confederation.show_img()
+#
+# mse = lena.compare_to(lena_dot, ImageDiffMethod.mse)
+# rmse = lena.compare_to(lena_dot, ImageDiffMethod.rmse)
+# print("Lena i lena_kropka: Mse - " + str(mse) + " ,Rmse - " + str(rmse))
+#
+# mse1 = lena.compare_to(lena_confederation, ImageDiffMethod.mse)
+# rmse1 = lena.compare_to(lena_confederation, ImageDiffMethod.rmse)
+# print("Lena i lena_korwin: Mse - " + str(mse1) + " ,Rmse - " + str(rmse1))
 
 
 # Lab 5
 
-# print(gray_lena.data)
-#
-# image_aligning = ImageAligning(gray_lena.data, ColorModel.gray).align_image()
-# print(image_aligning.data)
-#
-# grey_image_aligning = GrayScaleTransform(image_aligning.data, ColorModel.gray)
-# grey_image_aligning.show_img()
-# Histogram(grey_image_aligning.data).plot()
+lena.to_gray().show_img()
+Histogram(lena.to_gray().data).plot()
+print(lena.to_gray().data)
+
+lena_grey_aligned = Image(lena.to_gray().data, ColorModel.gray).align_image()
+lena_grey_aligned.show_img()
+Histogram(lena_grey_aligned.data).plot()
+print(lena_grey_aligned.data)

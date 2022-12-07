@@ -22,6 +22,6 @@ class ImageAligning(BaseImage):
             alignment = min_pixel * 255 / (max_pixel - min_pixel)
             self.data = self.data - alignment
             self.data = self.data.astype(int)
-        return BaseImage(self.data, ColorModel.gray)
+        return self.__class__(self.data, ColorModel.gray)
 
 

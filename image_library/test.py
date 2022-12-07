@@ -96,7 +96,7 @@ lena_confederation = Image('../data/lena_korwin.jpg', ColorModel.rgb)
 
 # RGB
 lena.show_img()
-Histogram(lena.to_gray().data).plot()
+Histogram(lena.to_gray().data).to_cumulated().plot()
 Histogram(lena.data).plot()
 
 lena_aligned = lena.align_image(tail_elimination=True)

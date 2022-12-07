@@ -8,17 +8,26 @@ class Histogram:
     """
     values: np.ndarray  # attribute that stores the values of the histogram of a given image
 
-    def __init__(self, pixels: np.ndarray) -> None:
-        if pixels.ndim == 2:
-            self.values = np.histogram(pixels, bins=256, range=(0, 255))[0]
+    def __init__(self, pixels: np.ndarray, is_histogram: bool = False) -> None:
+        if is_histogram is True:
+            self.values = pixels
         else:
-            first_layer = pixels[:, :, 0]
-            second_layer = pixels[:, :, 1]
-            third_layer = pixels[:, :, 2]
-            first_layer_as_histogram = np.histogram(first_layer, bins=256, range=(0, 255))[0]
-            second_layer_as_histogram = np.histogram(second_layer, bins=256, range=(0, 255))[0]
-            third_layer_as_histogram = np.histogram(third_layer, bins=256, range=(0, 255))[0]
-            self.values = np.dstack((first_layer_as_histogram, second_layer_as_histogram, third_layer_as_histogram))
+            if pixels.ndim == 2:
+                self.values = np.histogram(pixels, bins=256, range=(0, 255))[0]
+            else:
+                first_layer = pixels[:, :, 0]
+                second_layer = pixels[:, :, 1]
+                third_layer = pixels[:, :, 2]
+                first_layer_as_histogram = np.histogram(first_layer, bins=256, range=(0, 255))[0]
+                second_layer_as_histogram = np.histogram(second_layer, bins=256, range=(0, 255))[0]
+                third_layer_as_histogram = np.histogram(third_layer, bins=256, range=(0, 255))[0]
+                self.values = np.dstack((first_layer_as_histogram, second_layer_as_histogram, third_layer_as_histogram))
+
+    def to_cumulated(self) -> 'Histogram':
+        """
+        method that returns cumulative histogram based on the internal state of the object
+        """
+        return Histogram(np.cumsum(self.values), is_histogram=True)
 
     def plot(self) -> None:
         """
@@ -57,9 +66,3 @@ class Histogram:
             plt.plot(bin_edges, self.values[:, :, 2].flatten(), color="blue")
 
             plt.show()
-
-    def to_cumulated(self) -> 'Histogram':
-        """
-        method that returns cumulative histogram based on the internal state of the object
-        """
-        pass

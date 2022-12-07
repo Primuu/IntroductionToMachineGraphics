@@ -7,7 +7,7 @@ lena = Image('../data/lena.jpg', ColorModel.rgb)
 lena_dot = Image('../data/lena_kropka.jpg', ColorModel.rgb)
 lena_confederation = Image('../data/lena_korwin.jpg', ColorModel.rgb)
 
-lena.show_img()
+# lena.show_img()
 
 # Lab 2
 
@@ -62,14 +62,44 @@ lena.show_img()
 # rmse1 = lena.compare_to(lena_confederation, ImageDiffMethod.rmse)
 # print("Lena i lena_korwin: Mse - " + str(mse1) + " ,Rmse - " + str(rmse1))
 
-
 # Lab 5
 
-lena.to_gray().show_img()
-Histogram(lena.to_gray().data).plot()
-print(lena.to_gray().data)
+# Grey
 
-lena_grey_aligned = Image(lena.to_gray().data, ColorModel.gray).align_image()
-lena_grey_aligned.show_img()
-Histogram(lena_grey_aligned.data).plot()
-print(lena_grey_aligned.data)
+# lena.to_gray().show_img()
+# Histogram(lena.to_gray().data).plot()
+#
+# lena_grey_aligned = Image(lena.to_gray().data, ColorModel.gray).align_image(tail_elimination=False)
+# lena_grey_aligned.show_img()
+# Histogram(lena_grey_aligned.data).plot()
+#
+# # RGB
+# lena.show_img()
+# Histogram(lena.to_gray().data).plot()
+# Histogram(lena.data).plot()
+#
+# lena_aligned = lena.align_image(tail_elimination=False)
+# lena_aligned.show_img()
+# Histogram(Image(lena_aligned.data, ColorModel.rgb).to_gray().data).plot()
+# Histogram(lena_aligned.data).plot()
+#
+#
+# # Tail elimination
+# # Grey
+#
+# lena.to_gray().show_img()
+# Histogram(lena.to_gray().data).plot()
+#
+# lena_grey_aligned = Image(lena.to_gray().data, ColorModel.gray).align_image(tail_elimination=True)
+# lena_grey_aligned.show_img()
+# Histogram(lena_grey_aligned.data).plot()
+
+# RGB
+lena.show_img()
+Histogram(lena.to_gray().data).plot()
+Histogram(lena.data).plot()
+
+lena_aligned = lena.align_image(tail_elimination=True)
+lena_aligned.show_img()
+Histogram(Image(lena_aligned.data, ColorModel.rgb).to_gray().data).plot()
+Histogram(lena_aligned.data).plot()

@@ -2,7 +2,7 @@ from typing import Any
 
 import numpy as np
 
-from image_library.lab2.lab2 import BaseImage, ColorModel
+from image_library.lab2.lab2_base_image import BaseImage, ColorModel
 
 
 class GrayScaleTransform(BaseImage):

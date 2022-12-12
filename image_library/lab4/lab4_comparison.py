@@ -4,8 +4,8 @@ from typing import Any
 
 import numpy as np
 
-from image_library.lab2.lab2 import BaseImage, ColorModel
-from image_library.lab3.lab3 import GrayScaleTransform
+from image_library.lab2.lab2_base_image import BaseImage, ColorModel
+from image_library.lab3.lab3_grayscale_transform import GrayScaleTransform
 from image_library.lab4.lab4_histogram import Histogram
 
 

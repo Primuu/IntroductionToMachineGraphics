@@ -1,5 +1,5 @@
 from image_library.imageLib import Image
-from image_library.lab2.lab2 import ColorModel
+from image_library.lab2.lab2_base_image import ColorModel
 from image_library.lab4.lab4_comparison import ImageDiffMethod
 from image_library.lab4.lab4_histogram import Histogram
 
@@ -7,7 +7,7 @@ lena = Image('../data/lena.jpg', ColorModel.rgb)
 lena_dot = Image('../data/lena_kropka.jpg', ColorModel.rgb)
 lena_confederation = Image('../data/lena_korwin.jpg', ColorModel.rgb)
 
-# lena.show_img()
+lena.show_img()
 
 # Lab 2
 
@@ -28,7 +28,8 @@ lena_confederation = Image('../data/lena_korwin.jpg', ColorModel.rgb)
 
 # Lab 3
 
-# lena.to_gray().show_img()
+# lena_grey = lena.to_gray()
+# lena_grey.show_img()
 #
 # sepia1 = lena.to_sepia((1.1, 0.9))
 # sepia2 = lena.to_sepia((1.5, 0.5))
@@ -45,10 +46,13 @@ lena_confederation = Image('../data/lena_korwin.jpg', ColorModel.rgb)
 
 # Lab 4
 
-# lena.histogram().plot()
+# lena_histogram_rgb = lena.histogram()
+# lena_histogram_rgb.plot()
 #
-# lena.to_gray().show_img()
-# Histogram(lena.to_gray().data).plot()
+# lena_grey = Image(lena.to_gray().data, ColorModel.gray)
+# lena_grey.show_img()
+# lena_histogram_grey = lena_grey.histogram()
+# lena_histogram_grey.plot()
 #
 # lena_dot.show_img()
 #
@@ -64,42 +68,55 @@ lena_confederation = Image('../data/lena_korwin.jpg', ColorModel.rgb)
 
 # Lab 5
 
-# Grey
-
-# lena.to_gray().show_img()
-# Histogram(lena.to_gray().data).plot()
+# # Grey
 #
-# lena_grey_aligned = Image(lena.to_gray().data, ColorModel.gray).align_image(tail_elimination=False)
+# lena_grey = Image(lena.to_gray().data, ColorModel.gray)
+# lena_grey.show_img()
+# lena_histogram_grey = lena_grey.histogram()
+# lena_histogram_grey.plot()
+#
+# lena_grey_aligned = lena_grey.align_image(tail_elimination=False)
 # lena_grey_aligned.show_img()
 # Histogram(lena_grey_aligned.data).plot()
 #
 # # RGB
 # lena.show_img()
-# Histogram(lena.to_gray().data).plot()
-# Histogram(lena.data).plot()
+# lena_histogram_rgb = lena.histogram()
+# lena_histogram_rgb.plot()
+# lena_grey = Image(lena.to_gray().data, ColorModel.gray)
+# lena_histogram_grey = lena_grey.histogram()
+# lena_histogram_grey.plot()
 #
 # lena_aligned = lena.align_image(tail_elimination=False)
 # lena_aligned.show_img()
-# Histogram(Image(lena_aligned.data, ColorModel.rgb).to_gray().data).plot()
 # Histogram(lena_aligned.data).plot()
+# Histogram(Image(lena_aligned.data, ColorModel.rgb).to_gray().data).plot()
 #
 #
 # # Tail elimination
 # # Grey
 #
-# lena.to_gray().show_img()
-# Histogram(lena.to_gray().data).plot()
+# lena_grey = Image(lena.to_gray().data, ColorModel.gray)
+# lena_grey.show_img()
+# lena_histogram_grey = lena_grey.histogram()
+# lena_histogram_grey.plot()
 #
-# lena_grey_aligned = Image(lena.to_gray().data, ColorModel.gray).align_image(tail_elimination=True)
-# lena_grey_aligned.show_img()
-# Histogram(lena_grey_aligned.data).plot()
+# lena_grey_aligned_tail_eli = lena_grey.align_image(tail_elimination=True)
+# lena_grey_aligned_tail_eli.show_img()
+# Histogram(lena_grey_aligned_tail_eli.data).plot()
+#
+# # RGB
+# lena.show_img()
+# lena_grey = Image(lena.to_gray().data, ColorModel.gray)
+# lena_histogram_rgb = lena.histogram()
+# lena_histogram_rgb.plot()
+# lena_histogram_cumulated = lena_grey.histogram().to_cumulated()
+# lena_histogram_cumulated.plot()
+#
+# lena_aligned_tail_eli = lena.align_image(tail_elimination=True)
+# lena_aligned_tail_eli.show_img()
+# Histogram(lena_aligned_tail_eli.data).plot()
+# Histogram(Image(lena_aligned_tail_eli.data, ColorModel.rgb).to_gray().data).plot()
 
-# RGB
-lena.show_img()
-Histogram(lena.to_gray().data).to_cumulated().plot()
-Histogram(lena.data).plot()
+# Lab 6
 
-lena_aligned = lena.align_image(tail_elimination=True)
-lena_aligned.show_img()
-Histogram(Image(lena_aligned.data, ColorModel.rgb).to_gray().data).plot()
-Histogram(lena_aligned.data).plot()

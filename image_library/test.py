@@ -1,13 +1,16 @@
+import numpy as np
+
 from image_library.imageLib import Image
 from image_library.lab2.lab2_base_image import ColorModel
 from image_library.lab4.lab4_comparison import ImageDiffMethod
 from image_library.lab4.lab4_histogram import Histogram
+from image_library.lab6.lab6_image_filtration import *
 
 lena = Image('../data/lena.jpg', ColorModel.rgb)
 lena_dot = Image('../data/lena_kropka.jpg', ColorModel.rgb)
 lena_confederation = Image('../data/lena_korwin.jpg', ColorModel.rgb)
 
-lena.show_img()
+# lena.show_img()
 
 # Lab 2
 
@@ -120,3 +123,43 @@ lena.show_img()
 
 # Lab 6
 
+conv_test = Image('../data/conv_test.jpg', ColorModel.rgb)
+conv_test = Image((conv_test.data * 255).astype('i'), ColorModel.rgb)
+conv_test.show_img()
+
+identity_conv = conv_test.conv_2d(identity, identity_prefix)
+identity_conv.show_img()
+
+high_pass_conv = conv_test.conv_2d(high_pass, high_pass_prefix)
+high_pass_conv.show_img()
+
+low_pass_conv = conv_test.conv_2d(low_pass, low_pass_prefix)
+low_pass_conv.show_img()
+
+gaussian_blur_3x3_conv = conv_test.conv_2d(gaussian_blur_3x3, gaussian_blur_3x3_prefix)
+gaussian_blur_3x3_conv.show_img()
+
+gaussian_blur_5x5_conv = conv_test.conv_2d(gaussian_blur_5x5, gaussian_blur_5x5_prefix)
+gaussian_blur_5x5_conv.show_img()
+
+# SUDOKU
+
+sudoku = Image('../data/sudoku.jpg', ColorModel.rgb)
+sudoku = Image((sudoku.data * 255).astype('i'), ColorModel.rgb)
+sudoku.show_img()
+
+sudoku_0deg = sudoku.conv_2d(sobel_0deg, sobel_prefix)
+sudoku_0deg.show_img()
+
+sudoku_45deg = sudoku.conv_2d(sobel_45deg, sobel_prefix)
+sudoku_45deg.show_img()
+
+sudoku_90deg = sudoku.conv_2d(sobel_90deg, sobel_prefix)
+sudoku_90deg.show_img()
+
+sudoku_135deg = sudoku.conv_2d(sobel_135deg, sobel_prefix)
+sudoku_135deg.show_img()
+
+detected_edges = ((sudoku_0deg.data + sudoku_45deg.data + sudoku_90deg.data + sudoku_135deg.data) / 4).astype('i')
+print(detected_edges)
+Image(detected_edges, ColorModel.rgb).show_img()

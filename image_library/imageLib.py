@@ -4,9 +4,10 @@ from image_library.lab2.lab2_base_image import ColorModel
 from image_library.lab3.lab3_grayscale_transform import GrayScaleTransform
 from image_library.lab4.lab4_comparison import ImageComparison
 from image_library.lab5.lab5_image_aligning import ImageAligning
+from image_library.lab6.lab6_image_filtration import ImageFiltration
 
 
-class Image(GrayScaleTransform, ImageComparison, ImageAligning):
+class Image(GrayScaleTransform, ImageComparison, ImageAligning, ImageFiltration):
     """
     class that is the main interface of the library
     """

@@ -123,43 +123,62 @@ lena_confederation = Image('../data/lena_korwin.jpg', ColorModel.rgb)
 
 # Lab 6
 
-conv_test = Image('../data/conv_test.jpg', ColorModel.rgb)
-conv_test = Image((conv_test.data * 255).astype('i'), ColorModel.rgb)
-conv_test.show_img()
+# conv_test = Image('../data/conv_test.jpg', ColorModel.rgb)
+# conv_test = Image((conv_test.data * 255).astype('i'), ColorModel.rgb)
+# conv_test.show_img()
+#
+# identity_conv = conv_test.conv_2d(identity, identity_prefix)
+# identity_conv.show_img()
+#
+# high_pass_conv = conv_test.conv_2d(high_pass, high_pass_prefix)
+# high_pass_conv.show_img()
+#
+# low_pass_conv = conv_test.conv_2d(low_pass, low_pass_prefix)
+# low_pass_conv.show_img()
+#
+# gaussian_blur_3x3_conv = conv_test.conv_2d(gaussian_blur_3x3, gaussian_blur_3x3_prefix)
+# gaussian_blur_3x3_conv.show_img()
+#
+# gaussian_blur_5x5_conv = conv_test.conv_2d(gaussian_blur_5x5, gaussian_blur_5x5_prefix)
+# gaussian_blur_5x5_conv.show_img()
+#
+# # SUDOKU
+#
+# sudoku = Image('../data/sudoku.jpg', ColorModel.rgb)
+# sudoku = Image((sudoku.data * 255).astype('i'), ColorModel.rgb)
+# sudoku.show_img()
+#
+# sudoku_0deg = sudoku.conv_2d(sobel_0deg, sobel_prefix)
+# sudoku_0deg.show_img()
+#
+# sudoku_45deg = sudoku.conv_2d(sobel_45deg, sobel_prefix)
+# sudoku_45deg.show_img()
+#
+# sudoku_90deg = sudoku.conv_2d(sobel_90deg, sobel_prefix)
+# sudoku_90deg.show_img()
+#
+# sudoku_135deg = sudoku.conv_2d(sobel_135deg, sobel_prefix)
+# sudoku_135deg.show_img()
+#
+# detected_edges = ((sudoku_0deg.data + sudoku_45deg.data + sudoku_90deg.data + sudoku_135deg.data) / 4).astype('i')
+# print(detected_edges)
+# Image(detected_edges, ColorModel.rgb).show_img()
 
-identity_conv = conv_test.conv_2d(identity, identity_prefix)
-identity_conv.show_img()
+# Lab 7
 
-high_pass_conv = conv_test.conv_2d(high_pass, high_pass_prefix)
-high_pass_conv.show_img()
+lena.show_img()
 
-low_pass_conv = conv_test.conv_2d(low_pass, low_pass_prefix)
-low_pass_conv.show_img()
+threshold_30 = lena.threshold(30)
+threshold_30.show_img()
 
-gaussian_blur_3x3_conv = conv_test.conv_2d(gaussian_blur_3x3, gaussian_blur_3x3_prefix)
-gaussian_blur_3x3_conv.show_img()
+threshold_70 = lena.threshold(70)
+threshold_70.show_img()
 
-gaussian_blur_5x5_conv = conv_test.conv_2d(gaussian_blur_5x5, gaussian_blur_5x5_prefix)
-gaussian_blur_5x5_conv.show_img()
+threshold_127 = lena.threshold(127)
+threshold_127.show_img()
 
-# SUDOKU
+threshold_170 = lena.threshold(170)
+threshold_170.show_img()
 
-sudoku = Image('../data/sudoku.jpg', ColorModel.rgb)
-sudoku = Image((sudoku.data * 255).astype('i'), ColorModel.rgb)
-sudoku.show_img()
-
-sudoku_0deg = sudoku.conv_2d(sobel_0deg, sobel_prefix)
-sudoku_0deg.show_img()
-
-sudoku_45deg = sudoku.conv_2d(sobel_45deg, sobel_prefix)
-sudoku_45deg.show_img()
-
-sudoku_90deg = sudoku.conv_2d(sobel_90deg, sobel_prefix)
-sudoku_90deg.show_img()
-
-sudoku_135deg = sudoku.conv_2d(sobel_135deg, sobel_prefix)
-sudoku_135deg.show_img()
-
-detected_edges = ((sudoku_0deg.data + sudoku_45deg.data + sudoku_90deg.data + sudoku_135deg.data) / 4).astype('i')
-print(detected_edges)
-Image(detected_edges, ColorModel.rgb).show_img()
+threshold_220 = lena.threshold(220)
+threshold_220.show_img()

@@ -10,22 +10,19 @@ lena = Image('../data/lena.jpg', ColorModel.rgb)
 lena_dot = Image('../data/lena_kropka.jpg', ColorModel.rgb)
 lena_confederation = Image('../data/lena_korwin.jpg', ColorModel.rgb)
 
-# lena.show_img()
+lena.show_img()
 
 # Lab 2
 
 # lena_hsv = lena.to_hsv()
-# lena_hsv.show_img_in_rgb_range()
 # lena_hsv_to_rgb = lena_hsv.to_rgb()
 # lena_hsv_to_rgb.show_img()
 #
 # lena_hsi = lena.to_hsi()
-# lena_hsi.show_img_in_rgb_range()
 # lena_hsi_to_rgb = lena_hsi.to_rgb()
 # lena_hsi_to_rgb.show_img()
 #
 # lena_hsl = lena.to_hsl()
-# lena_hsl.show_img_in_rgb_range()
 # lena_hsl_to_rgb = lena_hsl.to_rgb()
 # lena_hsl_to_rgb.show_img()
 
@@ -166,19 +163,19 @@ lena_confederation = Image('../data/lena_korwin.jpg', ColorModel.rgb)
 
 # Lab 7
 
-lena.show_img()
-
-threshold_30 = lena.threshold(30)
-threshold_30.show_img()
-
-threshold_70 = lena.threshold(70)
-threshold_70.show_img()
-
-threshold_127 = lena.threshold(127)
-threshold_127.show_img()
-
-threshold_170 = lena.threshold(170)
-threshold_170.show_img()
-
-threshold_220 = lena.threshold(220)
-threshold_220.show_img()
+# lena.show_img()
+#
+# threshold_30 = lena.threshold(30)
+# threshold_30.show_img()
+#
+# threshold_70 = lena.threshold(70)
+# threshold_70.show_img()
+#
+# threshold_127 = lena.threshold(127)
+# threshold_127.show_img()
+#
+# threshold_170 = lena.threshold(170)
+# threshold_170.show_img()
+#
+# threshold_220 = lena.threshold(220)
+# threshold_220.show_img()

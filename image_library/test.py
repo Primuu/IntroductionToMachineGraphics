@@ -17,17 +17,17 @@ lena.show_img()
 
 # Lab 2
 
-# lena_hsv = lena.to_hsv()
-# lena_hsv_to_rgb = lena_hsv.to_rgb()
-# lena_hsv_to_rgb.show_img()
-#
-# lena_hsi = lena.to_hsi()
-# lena_hsi_to_rgb = lena_hsi.to_rgb()
-# lena_hsi_to_rgb.show_img()
-#
-# lena_hsl = lena.to_hsl()
-# lena_hsl_to_rgb = lena_hsl.to_rgb()
-# lena_hsl_to_rgb.show_img()
+lena_hsv = lena.to_hsv()
+lena_hsv_to_rgb = lena_hsv.to_rgb()
+lena_hsv_to_rgb.show_img()
+
+lena_hsi = lena.to_hsi()
+lena_hsi_to_rgb = lena_hsi.to_rgb()
+lena_hsi_to_rgb.show_img()
+
+lena_hsl = lena.to_hsl()
+lena_hsl_to_rgb = lena_hsl.to_rgb()
+lena_hsl_to_rgb.show_img()
 
 # Lab 3
 

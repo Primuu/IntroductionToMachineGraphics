@@ -122,8 +122,9 @@ class BaseImage:
         m = np.min([R, G, B], axis=0)
         d = (M - m) / 255
         L = (0.5 * (M.astype(int) + m.astype(int))).astype(int) / 255
-        d_divided = d / (1 - abs(2 * L - 1))
-        # divisor < 0 ?
+        divisor = (1 - abs(2 * L - 1))
+        divisor[divisor <= 0] = 0.001
+        d_divided = d / divisor
         S = np.where(L > 0, d_divided, 0)
         S[S > 1], S[S < 0] = 1, 0
         H = self.get_H(R.astype(int), G.astype(int), B.astype(int))

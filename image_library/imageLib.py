@@ -6,9 +6,10 @@ from image_library.lab4.lab4_comparison import ImageComparison
 from image_library.lab5.lab5_image_aligning import ImageAligning
 from image_library.lab6.lab6_image_filtration import ImageFiltration
 from image_library.lab7.lab7_thresholding import Thresholding
+from image_library.lab8.lab8_edge_detection import EdgeDetection
 
 
-class Image(GrayScaleTransform, ImageComparison, ImageAligning, ImageFiltration, Thresholding):
+class Image(GrayScaleTransform, ImageComparison, ImageAligning, ImageFiltration, Thresholding, EdgeDetection):
     """
     class that is the main interface of the library
     """

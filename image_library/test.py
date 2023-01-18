@@ -1,4 +1,7 @@
+import cv2
+import matplotlib
 import numpy as np
+from matplotlib import pyplot as plt
 
 from image_library.imageLib import Image
 from image_library.lab2.lab2_base_image import ColorModel
@@ -158,7 +161,6 @@ lena.show_img()
 # sudoku_135deg.show_img()
 #
 # detected_edges = ((sudoku_0deg.data + sudoku_45deg.data + sudoku_90deg.data + sudoku_135deg.data) / 4).astype('i')
-# print(detected_edges)
 # Image(detected_edges, ColorModel.rgb).show_img()
 
 # Lab 7
@@ -179,3 +181,32 @@ lena.show_img()
 #
 # threshold_220 = lena.threshold(220)
 # threshold_220.show_img()
+
+# lab 8
+
+# lena_gray = cv2.imread('../data/lena.jpg', cv2.IMREAD_GRAYSCALE)
+# canny_edges = cv2.Canny(
+#       lena_gray,
+#       16,  # prog histerezy 1
+#       40,  # prog histerezy 2
+#       3  # wielkoscc filtra sobela
+# )
+# plt.imshow(canny_edges, cmap='gray')
+# matplotlib.pyplot.show()
+
+# Image class
+
+# lena_gray_my = Image(lena.to_gray().data, ColorModel.gray)
+# lena_canny = lena_gray_my.canny(16, 40, 3)
+# lena_canny.show_img()
+
+# lake_color = Image('../data/swiecajty.jpg', ColorModel.rgb)
+# lake_gray = Image(lake_color.to_gray().data, ColorModel.gray)
+# lake_gray.show_img()
+# clahe = lake_gray.clahe()
+# clahe.show_img()
+
+# lena_gray_my = Image(lena.to_gray().data, ColorModel.gray)
+# lena_gray_my.show_img()
+# otsu = lena_gray_my.otsu()
+# otsu.show_img()

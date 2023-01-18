@@ -16,42 +16,29 @@ class ImageFiltration(BaseImage):
                 (Optional - 'object' correct form OR default value = 1 - arithmetic optimal form)
         method return image after filtration process
         """
-        values = self.data
-        if values.ndim == 2:
-            values = np.expand_dims(values, axis=-1)
-        if kernel.ndim == 2:
-            kernel = np.repeat(np.expand_dims(kernel, axis=-1), values.shape[-1], axis=-1)
-        if kernel.shape[-1] == 1:
-            kernel = np.repeat(kernel, values.shape[-1], axis=-1)
+        if self.data.ndim == 2:
+            output_array = self.convolve(self.data, kernel) * prefix
+            output_array[output_array > 255] = 255
+            output_array[output_array < 0] = 0
+            return self.__class__(output_array.astype('i'), self.color_model)
+        else:
+            first_layer, second_layer, third_layer = self.get_layers()
+            # l_y = layer convolved
+            first_l_y = self.convolve(first_layer, kernel) * prefix
+            second_l_y = self.convolve(second_layer, kernel) * prefix
+            third_l_y = self.convolve(third_layer, kernel) * prefix
+            first_l_y[first_l_y > 255], second_l_y[second_l_y > 255], third_l_y[third_l_y > 255] = 255, 255, 255
+            first_l_y[first_l_y < 0], second_l_y[second_l_y < 0], third_l_y[third_l_y < 0] = 0, 0, 0
+            output_array = np.dstack((first_l_y, second_l_y, third_l_y))
+            return self.__class__(output_array.astype('i'), self.color_model)
 
-        kernel = prefix * kernel.astype('float32')
-
-        size_x, size_y = kernel.shape[:2]
-        width, height = values.shape[:2]
-
-        output_array = np.zeros((width - size_x + 3,
-                                 height - size_y + 3,
-                                 values.shape[-1]))
-
-        padded_image = np.pad(values, [
-                                        (1, 1),
-                                        (1, 1),
-                                        (0, 0)])
-
-        for x in range(
-                padded_image.shape[0] - size_x + 1):  # -size_x + 1 is to keep the window within the bounds of the image
-            for y in range(padded_image.shape[1] - size_y + 1):
-                # Creates the window with the same size as the kernel
-                window = padded_image[x:x + size_x, y:y + size_y]
-
-                # Sums over the product of the filter and the window
-                output_values = np.sum(kernel * window, axis=(0, 1))
-                output_array[x, y] = output_values
-
-        output_array[output_array > 255] = 255
-        output_array[output_array < 0] = 0
-
-        return self.__class__(output_array.astype('i'), self.color_model)
+    def convolve(self, layer: np.ndarray, kernel: np.ndarray) -> np.ndarray:
+        rows_number, columns_number = layer.shape
+        flattened_layer = np.reshape(layer, (1, layer.size))
+        flattened_kernel = np.reshape(kernel, (1, kernel.size))
+        flattened_convolved_layer = np.convolve(flattened_layer[0], flattened_kernel[0], 'same')
+        convolved_layer = np.reshape(flattened_convolved_layer, (rows_number, columns_number))
+        return convolved_layer
 
 
 identity_prefix = 1

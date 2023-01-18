@@ -1,5 +1,6 @@
 from typing import Any
 
+import cv2
 import numpy as np
 
 from image_library.lab2.lab2_base_image import BaseImage, ColorModel
@@ -22,3 +23,12 @@ class Thresholding(BaseImage):
             pixels = self.data
         pixels = np.where(pixels < value, 0, 255)
         return self.__class__(pixels, ColorModel.gray)
+
+    def otsu(self, thresh: int = 0, maxval: int = 255):
+        if self.color_model != ColorModel.gray:
+            raise Exception("Color model must be gray")
+        gray = self.data.astype('uint8')
+
+        _, thresh_otsu = cv2.threshold(gray, thresh=thresh, maxval=maxval, type=cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+
+        return self.__class__(thresh_otsu, self.color_model)

@@ -1,5 +1,6 @@
 from typing import Any
 
+import cv2
 import numpy as np
 
 from image_library.lab2.lab2_base_image import BaseImage, ColorModel
@@ -12,6 +13,18 @@ class ImageAligning(BaseImage):
     """
     def __init__(self, data: Any, color_model: ColorModel) -> None:
         super().__init__(data, color_model)
+
+    def clahe(self, clipLimit: float = 2.0, tileGridSize: tuple = (4, 4)) -> BaseImage:
+        if self.color_model != ColorModel.gray:
+            raise Exception("Color model must be gray")
+        gray = self.data.astype('uint8')
+
+        clahe = cv2.createCLAHE(
+            clipLimit=clipLimit,
+            tileGridSize=tileGridSize
+        )
+        equalized = clahe.apply(gray)
+        return self.__class__(equalized, self.color_model)
 
     def align_image(self, tail_elimination: bool = True) -> BaseImage:
         """

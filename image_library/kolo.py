@@ -11,7 +11,3 @@ conv_test = Image((conv_test.data * 255).astype('i'), ColorModel.rgb)
 
 result_aligned = conv_test.align_image(tail_elimination=True)
 result_aligned.show_img()
-
-result_aligned = book.align_image(tail_elimination=True)
-result_aligned.show_img()
-

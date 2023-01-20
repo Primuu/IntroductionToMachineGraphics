@@ -96,30 +96,30 @@ lena.show_img()
 # Histogram(Image(lena_aligned.data, ColorModel.rgb).to_gray().data).plot()
 #
 #
-# # Tail elimination
-# # Grey
-#
-# lena_grey = Image(lena.to_gray().data, ColorModel.gray)
-# lena_grey.show_img()
-# lena_histogram_grey = lena_grey.histogram()
-# lena_histogram_grey.plot()
-#
-# lena_grey_aligned_tail_eli = lena_grey.align_image(tail_elimination=True)
-# lena_grey_aligned_tail_eli.show_img()
-# Histogram(lena_grey_aligned_tail_eli.data).plot()
-#
-# # RGB
-# lena.show_img()
-# lena_grey = Image(lena.to_gray().data, ColorModel.gray)
-# lena_histogram_rgb = lena.histogram()
-# lena_histogram_rgb.plot()
-# lena_histogram_cumulated = lena_grey.histogram().to_cumulated()
-# lena_histogram_cumulated.plot()
-#
-# lena_aligned_tail_eli = lena.align_image(tail_elimination=True)
-# lena_aligned_tail_eli.show_img()
-# Histogram(lena_aligned_tail_eli.data).plot()
-# Histogram(Image(lena_aligned_tail_eli.data, ColorModel.rgb).to_gray().data).plot()
+# Tail elimination
+# Grey
+
+lena_grey = Image(lena.to_gray().data, ColorModel.gray)
+lena_grey.show_img()
+lena_histogram_grey = lena_grey.histogram()
+lena_histogram_grey.plot()
+
+lena_grey_aligned_tail_eli = lena_grey.align_image(tail_elimination=True)
+lena_grey_aligned_tail_eli.show_img()
+Histogram(lena_grey_aligned_tail_eli.data).plot()
+
+# RGB
+lena.show_img()
+lena_grey = Image(lena.to_gray().data, ColorModel.gray)
+lena_histogram_rgb = lena.histogram()
+lena_histogram_rgb.plot()
+lena_histogram_cumulated = lena_grey.histogram().to_cumulated()
+lena_histogram_cumulated.plot()
+
+lena_aligned_tail_eli = lena.align_image(tail_elimination=True)
+lena_aligned_tail_eli.show_img()
+Histogram(lena_aligned_tail_eli.data).plot()
+Histogram(Image(lena_aligned_tail_eli.data, ColorModel.rgb).to_gray().data).plot()
 
 # Lab 6
 
